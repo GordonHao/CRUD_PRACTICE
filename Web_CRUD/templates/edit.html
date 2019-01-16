@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse:collapse;
+}
+th, td {
+    padding: 15px
+}
+th {
+    text-align: middle;
+}
+</style>
+                    
+</head>
+    <body>
+            
+        <div class="container"></div>
+            <h1>Edit data</h1>  
+            
+        {% for result in results %}
+				<!-- Modal -->
+				<div id="modalEdit{{ id }}" class="modal fade" role="dialog">
+						<div class="modal-dialog">
+		
+		
+							<!-- Modal content-->
+							<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal">&times;</button>
+								<h4 class="modal-title">Edit data</h4>
+							</div>
+							<div class="modal-body">
+								<form action="{{ url_for('edit') }}" method="POST">
+									<div class="form-group">
+										<label>Name : </label>
+										<input type="hidden" name="id" value="{{ result['name'] }}">(帶入值)<br><br> 
+										<input type="text" class="form-control" name="Name" value="{{ result['name'] }}"><br><br> 
+										<label>Gender :</label>
+										<input type="hidden" name="id" value="{{ result['gender'] }}">(帶入值)<br><br> 
+										<input type="text" class="form-control" name="Gender" value="{{ result['gender'] }}"><br><br> 
+									</div>
+									<div class="modal-footer">
+											<button type="submit" class="btn btn-warning" data-dismiss="modal">Update</button>
+									</div>
+								</form>
+							</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+									</div>
+							</div>
+		
+						</div>
+						</div>            
+        {% endfor %}
+                
+         </div> 
+                   
+    </body>
+</html>
+
+
