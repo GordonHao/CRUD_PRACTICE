@@ -5,13 +5,13 @@ app = Flask(__name__)
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PASSWORD'] = '12345'
-app.config['MYSQL_DB'] = 'testdb'
+app.config['MYSQL_DB'] = 'flaskdb'
 mysql = MySQL(app)
 
 @app.route('/')
 def home():
     cur = mysql.connection.cursor()
-    cur.execute("select information.class, information.Name, grades.Subject, grades.grade from information, grades where class='甲' and subject='國文' and grades.studentid=information.id")
+    cur.execute("select * FROM class")
     rv = cur.fetchall()
     cur.close()
     return render_template('home.html', classes=rv)
